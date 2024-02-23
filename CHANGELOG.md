@@ -2,27 +2,20 @@
 
 __N.b.__ Latest version should always be on top
 
-| Heading | Description |
-| :---- | :---- |
-| __Added__ | for new features. |
-| __Changed__ | for changes in existing functionality. |
-| __Deprecated__ | for soon-to-be removed features. |
-| __Removed__ | for now removed features. |
-| __Fixed__ | for any bug fixes. |
-| __Security__ | in case of vulnerabilities. |
+| Heading        | Description                            |
+| :------------- | :------------------------------------- |
+| __Added__      | for new features.                      |
+| __Changed__    | for changes in existing functionality. |
+| __Deprecated__ | for soon-to-be removed features.       |
+| __Removed__    | for now removed features.              |
+| __Fixed__      | for any bug fixes.                     |
+| __Security__   | in case of vulnerabilities.            |
 
 __Reference__:
 * [keepachangelog](https://keepachangelog.com/en/1.0.0/)
 * [Semantic Versioning](https://semver.org/)
 
 # CHANGELOG
-
-## [0.2.0]
-
-### Removed
-
-* pre-commit install guide, as this should be installed outside of this repo,
-  seeing as it will be used for multiple repositories
 
 ## [0.1.0]
 

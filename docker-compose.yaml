@@ -1,0 +1,15 @@
+# https://dev.to/sonyarianto/how-to-spin-mongodb-server-with-docker-and-docker-compose-2lef
+
+services:
+  mongo_container:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+    - '27017:27017'
+    volumes:
+      - mongodb_data_container:/data/db
+    
+volumes:
+  mongodb_data_container:
