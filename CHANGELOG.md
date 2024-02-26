@@ -17,11 +17,17 @@ __Reference__:
 
 # CHANGELOG
 
+## [0.3.0]
+
+### Added
+
+* Find function
+
 ## [0.2.0]
 
 ### Added
 
-* Added insertion statements code
+* InsertOne and Insert Many functions
 
 ## [0.1.0]
 
