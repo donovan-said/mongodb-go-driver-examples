@@ -50,8 +50,6 @@ func OpenConn(uri string) (*mongo.Client, context.Context, context.CancelFunc, e
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		log.Fatal(err)
-	} else {
-		fmt.Println("Connected successfully!")
 	}
 
 	return client, ctx, cancel, err
@@ -67,7 +65,7 @@ func PingConn(client *mongo.Client, ctx context.Context) error {
 	if err != nil {
 		log.Fatal(err)
 	} else {
-		fmt.Println("Pinged MongoDB Successfully!")
+		fmt.Println(">> Pinged MongoDB Successfully!")
 	}
 	return nil
 }
