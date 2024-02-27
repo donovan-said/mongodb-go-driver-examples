@@ -17,6 +17,17 @@ __Reference__:
 
 # CHANGELOG
 
+## [0.4.0]
+
+### Added
+
+* Prompt function for database population
+
+### Changed
+
+* Refined find function
+* Updated README
+
 ## [0.3.0]
 
 ### Added
