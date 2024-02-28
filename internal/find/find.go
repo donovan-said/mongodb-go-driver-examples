@@ -1,3 +1,5 @@
+// https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo#Collection.Find
+
 package find
 
 import (
@@ -13,7 +15,7 @@ import (
 // interface. field is of type interface, which limits the field being returned.
 
 // query method returns a cursor and error.
-func Query(client *mongo.Client, ctx context.Context, dataBase, col string, filter interface{}) (result *mongo.Cursor, err error) {
+func Find(client *mongo.Client, ctx context.Context, dataBase, col string, filter interface{}) (result *mongo.Cursor, err error) {
 
 	collection := client.Database(dataBase).Collection(col)
 

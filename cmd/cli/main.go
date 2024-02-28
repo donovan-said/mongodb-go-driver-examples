@@ -8,23 +8,21 @@ This code is primarily derived from:
 package main
 
 import (
-	"bufio"
 	"context"
 	"encoding/json"
 	"fmt"
-	"os"
-	"strings"
 
 	"github.com/donovan-said/mongodb-go-driver-examples/internal/connection"
 	"github.com/donovan-said/mongodb-go-driver-examples/internal/find"
 	"github.com/donovan-said/mongodb-go-driver-examples/internal/insertion"
+	"github.com/donovan-said/mongodb-go-driver-examples/internal/prompt"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
 const MongoDB_URI = "mongodb://root:rootpassword@127.0.0.1:27017/"
 
-// Struct is used for sample dataset
+// Define struct to be used for sample dataset
 type Film struct {
 	Name     string
 	Year     int
@@ -33,11 +31,6 @@ type Film struct {
 }
 
 func insertOneSample(client *mongo.Client, ctx context.Context) {
-	// TODO Review the followuing:
-	// Create  a object of type interface to  store the bson values, that
-	// we are inserting into database.
-	// var document interface{}
-	// document := bson.D{{"Dune", 2022}, {"TMNT", 2023}}
 
 	entry := Film{Name: "Dune", Year: 2020, Genre: "Science Fiction", Language: "English"}
 
@@ -60,6 +53,7 @@ func insertOneSample(client *mongo.Client, ctx context.Context) {
 }
 
 func insertManySample(client *mongo.Client, ctx context.Context) {
+
 	entries := []interface{}{
 		Film{Name: "Deadpool", Year: 2024, Genre: "Super Hero", Language: "English"},
 		Film{Name: "TMNT", Year: 2023, Genre: "Super Hero", Language: "English"},
@@ -84,15 +78,11 @@ func insertManySample(client *mongo.Client, ctx context.Context) {
 }
 
 func findManySample(client *mongo.Client, ctx context.Context) {
-	// create a filter an option of type interface, that stores bjson
-	// objects.
-	// var filter, option interface{}
 
-	// filter := Film{Name: "TMNT", Year: 2023, Genre: "Super Hero", Language: "English"}
+	// Create a filter to match documents
+	filter := bson.D{{Key: "name", Value: "TMNT"}}
 
-	filter := bson.D{{"name", "TMNT"}}
-
-	cursor, err := find.Query(client, ctx, "entertainment", "films", filter)
+	cursor, err := find.Find(client, ctx, "entertainment", "films", filter)
 
 	if err != nil {
 		panic(err)
@@ -113,20 +103,11 @@ func findManySample(client *mongo.Client, ctx context.Context) {
 	}
 }
 
-func userPrompt() (response string) {
-	scanner := bufio.NewReader(os.Stdin)
-	fmt.Println(">> Do you want to populate the database? (yes/no): ")
-	name, _ := scanner.ReadString('\n')
-
-	return strings.TrimSpace(name)
-
-}
-
 func main() {
 
 	//----------------------------------------------------------------------
 	// User input
-	populate := userPrompt()
+	populate := prompt.UserPrompt()
 
 	//----------------------------------------------------------------------
 	// Establish connection
@@ -144,7 +125,8 @@ func main() {
 	connection.PingConn(client, ctx)
 
 	//----------------------------------------------------------------------
-	// Insertion switch statement
+	// Insertion switch statement to decide whether to populate the database
+	// or not.
 
 	switch populate {
 	case "yes":
