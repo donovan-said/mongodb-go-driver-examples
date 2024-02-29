@@ -5,7 +5,7 @@
   - [MongoDB Container](#mongodb-container)
     - [Run Docker MongoDB Container](#run-docker-mongodb-container)
     - [Shutdown the Docker Container](#shutdown-the-docker-container)
-  - [VSCode MongoDb Extension](#vscode-mongodb-extension)
+  - [VSCode MongoDB Extension](#vscode-mongodb-extension)
     - [Running the Sample Go Scripts](#running-the-sample-go-scripts)
   - [Appendix](#appendix)
     - [Connect with Mongosh](#connect-with-mongosh)
@@ -40,7 +40,7 @@ docker-compose stop
 docker-compose down
 ```
 
-## VSCode MongoDb Extension
+## VSCode MongoDB Extension
 
 Please see the [VSCode MongoDB extension](https://code.visualstudio.com/docs/azure/mongodb)
 documentation to see how to connect via the extension.

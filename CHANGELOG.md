@@ -17,6 +17,13 @@ __Reference__:
 
 # CHANGELOG
 
+## [0.5.0]
+
+### Changed
+
+* Split functions into separate files for clarity
+* Updated README
+
 ## [0.4.0]
 
 ### Added
