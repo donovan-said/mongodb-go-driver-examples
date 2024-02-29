@@ -21,7 +21,7 @@ __Reference__:
 
 ### Changed
 
-* Split functions into separate files for clearity
+* Split functions into separate files for clarity
 * Updated README
 
 ## [0.4.0]
