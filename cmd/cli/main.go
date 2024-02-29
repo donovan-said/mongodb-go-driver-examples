@@ -11,9 +11,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
-	"os"
-	"strconv"
 
 	"github.com/donovan-said/mongodb-go-driver-examples/internal/connection"
 	"github.com/donovan-said/mongodb-go-driver-examples/internal/find"
@@ -26,33 +23,16 @@ import (
 const MongoDB_URI = "mongodb://root:rootpassword@127.0.0.1:27017/"
 
 // Define struct to be used for sample dataset
-type ArchFilm struct {
+type Film struct {
 	Name     string
 	Year     int
 	Genre    string
 	Language string
 }
 
-type Films struct {
-	Films []Film `json:"films"`
-}
-
-type Film struct {
-	Name     string `json:"name"`
-	Year     int    `json:"year"`
-	Genre    string `json:"genre"`
-	Language string `json:"language"`
-	Social   Social `json:"social"`
-}
-
-type Social struct {
-	Facebook string `json:"facebook"`
-	Twitter  string `json:"twitter"`
-}
-
 func insertOneSample(client *mongo.Client, ctx context.Context) {
 
-	entry := ArchFilm{Name: "Dune", Year: 2020, Genre: "Science Fiction", Language: "English"}
+	entry := Film{Name: "Dune", Year: 2020, Genre: "Science Fiction", Language: "English"}
 
 	// InsertOne() accepts client , context, database name collection name and
 	// an interface that will be inserted into the  collection. insertOne
@@ -62,7 +42,6 @@ func insertOneSample(client *mongo.Client, ctx context.Context) {
 		client, ctx, "entertainment", "films", entry,
 	)
 
-	// Handle the error
 	if err != nil {
 		panic(err)
 	}
@@ -75,16 +54,15 @@ func insertOneSample(client *mongo.Client, ctx context.Context) {
 func insertManySample(client *mongo.Client, ctx context.Context) {
 
 	entries := []interface{}{
-		ArchFilm{Name: "Deadpool", Year: 2024, Genre: "Super Hero", Language: "English"},
-		ArchFilm{Name: "TMNT", Year: 2023, Genre: "Super Hero", Language: "English"},
-		ArchFilm{Name: "Star Wars", Year: 2020, Genre: "Science Fiction", Language: "English"},
+		Film{Name: "Deadpool", Year: 2024, Genre: "Super Hero", Language: "English"},
+		Film{Name: "TMNT", Year: 2023, Genre: "Super Hero", Language: "English"},
+		Film{Name: "Star Wars", Year: 2020, Genre: "Science Fiction", Language: "English"},
 	}
 
 	insertManyResult, err := insertion.InsertMany(
 		client, ctx, "entertainment", "films", entries,
 	)
 
-	// Handle the error
 	if err != nil {
 		panic(err)
 	}
@@ -108,7 +86,7 @@ func findManySample(client *mongo.Client, ctx context.Context) {
 		panic(err)
 	}
 
-	var results []ArchFilm
+	var results []Film
 	if err = cursor.All(ctx, &results); err != nil {
 		panic(err)
 	}
@@ -123,38 +101,7 @@ func findManySample(client *mongo.Client, ctx context.Context) {
 	}
 }
 
-func jsonParser() {
-	// Open the JSON file
-	jsonFile, err := os.Open("dataset.json")
-
-	// Error handling
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fmt.Println("Successfully opened dataset.json")
-
-	// defer the closing of the json file
-	defer jsonFile.Close()
-
-	byteValue, _ := io.ReadAll(jsonFile)
-
-	var films Films
-
-	json.Unmarshal(byteValue, &films)
-
-	for i := 0; i < len(films.Films); i++ {
-		fmt.Println("Film Name: " + films.Films[i].Name)
-		fmt.Println("Film Year: " + strconv.Itoa(films.Films[i].Year))
-		fmt.Println("Film Gengre: " + films.Films[i].Genre)
-		fmt.Println("Film Language: " + films.Films[i].Language)
-		fmt.Println("Facebook URL: " + films.Films[i].Social.Facebook)
-	}
-}
-
 func main() {
-
-	jsonParser()
 	//----------------------------------------------------------------------
 	// User input is used to decide whether to populate the database or not
 	populate := prompt.UserPrompt()
@@ -188,8 +135,7 @@ func main() {
 	}
 
 	//----------------------------------------------------------------------
-	// Find
+	// Sample usage of the Find function.
 
 	findManySample(client, ctx)
-
 }
