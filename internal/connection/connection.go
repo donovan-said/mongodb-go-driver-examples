@@ -1,5 +1,8 @@
 /*
-This code is primarily derived from https://www.geeksforgeeks.org/how-to-use-go-with-mongodb/
+- https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo#Client
+- https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo#
+- https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo#Client.Disconnect
+- https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo#Client.Ping
 */
 
 package connection

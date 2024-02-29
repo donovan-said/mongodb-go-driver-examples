@@ -131,10 +131,7 @@ func main() {
 	switch populate {
 	case "yes":
 		fmt.Printf(">> Populating the MongoDB database!\n")
-		// Insert One
 		insertOneSample(client, ctx)
-
-		// Insert Many
 		insertManySample(client, ctx)
 	case "no":
 		fmt.Printf(">> Not populating the MongoDB database!\n")
