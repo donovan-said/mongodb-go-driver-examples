@@ -1,7 +1,7 @@
 /*
 This code is primarily derived from:
-- https://www.mongodb.com/docs/drivers/go/current/usage-examples/
 - https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo
+- https://www.mongodb.com/docs/drivers/go/current/usage-examples/
 - https://www.geeksforgeeks.org/how-to-use-go-with-mongodb/
 */
 
@@ -42,7 +42,6 @@ func insertOneSample(client *mongo.Client, ctx context.Context) {
 		client, ctx, "entertainment", "films", entry,
 	)
 
-	// Handle the error
 	if err != nil {
 		panic(err)
 	}
@@ -64,7 +63,6 @@ func insertManySample(client *mongo.Client, ctx context.Context) {
 		client, ctx, "entertainment", "films", entries,
 	)
 
-	// Handle the error
 	if err != nil {
 		panic(err)
 	}
@@ -104,9 +102,8 @@ func findManySample(client *mongo.Client, ctx context.Context) {
 }
 
 func main() {
-
 	//----------------------------------------------------------------------
-	// User input
+	// User input is used to decide whether to populate the database or not
 	populate := prompt.UserPrompt()
 
 	//----------------------------------------------------------------------
@@ -138,8 +135,7 @@ func main() {
 	}
 
 	//----------------------------------------------------------------------
-	// Find
+	// Sample usage of the Find function.
 
 	findManySample(client, ctx)
-
 }

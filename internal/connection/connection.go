@@ -1,6 +1,6 @@
 /*
 - https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo#Client
-- https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo#
+- https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo#Connect
 - https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo#Client.Disconnect
 - https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo#Client.Ping
 */

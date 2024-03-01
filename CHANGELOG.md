@@ -17,6 +17,12 @@ __Reference__:
 
 # CHANGELOG
 
+## [0.6.0]
+
+### Changed
+
+* Tidied up comments and updated docs
+
 ## [0.5.0]
 
 ### Changed

@@ -1,6 +1,7 @@
 # MongoDB Go Driver Examples
 
 - [MongoDB Go Driver Examples](#mongodb-go-driver-examples)
+  - [Overview](#overview)
   - [Requirements](#requirements)
   - [MongoDB Container](#mongodb-container)
     - [Run Docker MongoDB Container](#run-docker-mongodb-container)
@@ -9,6 +10,11 @@
     - [Running the Sample Go Scripts](#running-the-sample-go-scripts)
   - [Appendix](#appendix)
     - [Connect with Mongosh](#connect-with-mongosh)
+
+## Overview
+
+The purose of this repo is for me to learn how to use the [MongoDB Go Driver](https://www.mongodb.com/docs/drivers/go/current/)
+and collate useful examples.
 
 ## Requirements
 
