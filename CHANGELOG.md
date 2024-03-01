@@ -21,7 +21,7 @@ __Reference__:
 
 ### Changed
 
-* TBC
+* Tidied up comments and updated docs
 
 ## [0.5.0]
 
